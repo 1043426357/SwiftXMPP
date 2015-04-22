@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if sender as UIBarButtonItem == self.doneButton {
+        if sender as! UIBarButtonItem == self.doneButton {
             
             NSUserDefaults.standardUserDefaults().setObject(userTF.text, forKey: "weixinID")
             NSUserDefaults.standardUserDefaults().setObject(pwdTF.text, forKey: "weixinPwd")

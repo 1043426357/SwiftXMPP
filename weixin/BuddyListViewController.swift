@@ -113,7 +113,7 @@ class BuddyListViewController: UITableViewController, ZtDL, XxDL {
     
     //获取总代理
     func zdl() -> AppDelegate {
-        return UIApplication.sharedApplication().delegate as AppDelegate
+        return UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     //登入
@@ -227,7 +227,7 @@ class BuddyListViewController: UITableViewController, ZtDL, XxDL {
     
     //单元格内容
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("buddyListCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("buddyListCell", forIndexPath: indexPath) as! UITableViewCell
         
         //好友状态
         let online = ztList[indexPath.row].isOnline
@@ -321,7 +321,7 @@ class BuddyListViewController: UITableViewController, ZtDL, XxDL {
         if ( segue.identifier == "toChatSegue" ) {
             
             //取聊天视图的控制器
-            let dest = segue.destinationViewController as ChatViewController
+            let dest = segue.destinationViewController as! ChatViewController
             
             //把当前选择单元格的用户名传递给聊天视图
             dest.toBuddyName = currentBuddyName
@@ -352,7 +352,7 @@ class BuddyListViewController: UITableViewController, ZtDL, XxDL {
     
     @IBAction func unwindToBList(segue: UIStoryboardSegue) {
         //如果是登陆界面的完成按钮点击了, 开始登陆
-        let source = segue.sourceViewController as LoginViewController
+        let source = segue.sourceViewController as! LoginViewController
         
         if source.requireLogin {
             //注销前一个用户

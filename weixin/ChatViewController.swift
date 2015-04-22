@@ -12,14 +12,14 @@ class ChatViewController: UITableViewController, XxDL {
     
     @IBAction func composing(sender: UITextField) {
         //构建XML元素 message
-        var xmlmessage = DDXMLElement.elementWithName("message") as DDXMLElement
+        var xmlmessage = DDXMLElement.elementWithName("message") as! DDXMLElement
         
         //增加属性
         xmlmessage.addAttributeWithName("to", stringValue: toBuddyName)
         xmlmessage.addAttributeWithName("from", stringValue: NSUserDefaults.standardUserDefaults().stringForKey("weixinID"))
 
         //构建正在输入元素
-        var composing = DDXMLElement.elementWithName("composing") as DDXMLElement
+        var composing = DDXMLElement.elementWithName("composing") as! DDXMLElement
         composing.addAttributeWithName("xmlns", stringValue: "http://jabber.org/protocol/chatstates")
         
         
@@ -39,7 +39,7 @@ class ChatViewController: UITableViewController, XxDL {
         //如果文本不为空
         if ( !msgStr.isEmpty ) {
             //构建XML元素 message
-            var xmlmessage = DDXMLElement.elementWithName("message") as DDXMLElement
+            var xmlmessage = DDXMLElement.elementWithName("message") as! DDXMLElement
             
             //增加属性
             xmlmessage.addAttributeWithName("type", stringValue: "chat")
@@ -47,7 +47,7 @@ class ChatViewController: UITableViewController, XxDL {
             xmlmessage.addAttributeWithName("from", stringValue: NSUserDefaults.standardUserDefaults().stringForKey("weixinID"))
             
             //构建正文
-            var body = DDXMLElement.elementWithName("body") as DDXMLElement
+            var body = DDXMLElement.elementWithName("body") as! DDXMLElement
             body.setStringValue(msgStr)
             
             //消息的子节点中加入正文
@@ -107,7 +107,7 @@ class ChatViewController: UITableViewController, XxDL {
     
     //获取总代理
     func zdl() -> AppDelegate {
-        return UIApplication.sharedApplication().delegate as AppDelegate
+        return UIApplication.sharedApplication().delegate as! AppDelegate
     }
 
     override func viewDidLoad() {
@@ -143,7 +143,7 @@ class ChatViewController: UITableViewController, XxDL {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath) as! UITableViewCell
         
         //取对应的消息
         let msg = msgList[indexPath.row]
